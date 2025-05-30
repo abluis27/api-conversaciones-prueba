@@ -11,6 +11,3 @@ database = client[DB_NAME]
 
 conversation_collection = database.get_collection("conversaciones")
 user_collection = database.get_collection("usuarios")
-
-print("Mongo URI:", MONGO_URI)
-print("DB Name:", DB_NAME)

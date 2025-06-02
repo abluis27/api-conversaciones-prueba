@@ -8,6 +8,7 @@ import os
 
 load_dotenv()  # ensures environment is loaded early
 
+# Define allowed origins
 origins = [
     "http://localhost",
     "http://localhost:3000",

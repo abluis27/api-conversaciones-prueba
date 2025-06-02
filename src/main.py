@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from src.routes.conversations import router as conversations_router
 from dotenv import load_dotenv
 from src.routes.users import router as user_router
@@ -7,7 +8,23 @@ import os
 
 load_dotenv()  # ensures environment is loaded early
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "https://atencionprimaria.riberadeltajo.es"
+]
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,            # list of allowed origins
+    allow_credentials=True,
+    allow_methods=["*"],              # allow all HTTP methods
+    allow_headers=["*"],              # allow all headers
+)
+
 app.include_router(conversations_router)
 app.include_router(user_router)
 
